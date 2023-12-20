@@ -1,15 +1,35 @@
-import text from "./part-two-subset.txt";
+import text from "./values.txt";
 
-const lines = text.split("\n").filter((line) => line.trim() !== "");
+const lines = text.split("\n").filter(line => line.trim() !== "");
+
+const allNumbers = [];
 
 function isNumber(str: string) {
 	return !isNaN(+str);
 }
 
-const allNumbers = [];
+const numberMap: { [key: string]: string } = {
+    one: '1',
+    two: '2',
+    three: '3',
+    four: '4',
+    five: '5',
+    six: '6',
+    seven: '7',
+    eight: '8',
+    nine: '9'
+};
 
-for (let i = 0; i < lines.length; i++) {
-	const line = [lines[i]];
+function replaceWrittenNumbersWithDigits(line: string): string {
+    return line.replace(/one|two|three|four|five|six|seven|eight|nine/gi, matched => {
+        return numberMap[matched.toLowerCase()];
+    });
+}
+
+const convertedLines = lines.map(replaceWrittenNumbersWithDigits);
+
+for (let i = 0; i < convertedLines.length; i++) {
+	const line = [convertedLines[i]];
 	let numbers = line[0].split("").filter(isNumber);
 	if (numbers.length > 2) {
 		numbers.splice(1, numbers.length - 2);
@@ -20,7 +40,6 @@ for (let i = 0; i < lines.length; i++) {
 	}
 	const combinedNumber = parseInt(numberArray.join(""));
 	if (!isNaN(combinedNumber)) {
-		console.log(combinedNumber);
 	  allNumbers.push(combinedNumber);
 	}
 }

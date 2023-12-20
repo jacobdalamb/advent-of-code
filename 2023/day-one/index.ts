@@ -1,4 +1,4 @@
-import text from "./values.txt";
+import text from "./input.txt";
 
 const lines = text.split("\n").filter(line => line.trim() !== "");
 

@@ -1,36 +1,49 @@
 import text from "./input.txt";
 
-const lines = text.split("\n").filter(line => line.trim() !== "");
+const lines = text.split("\n").filter((line) => line.trim() !== "");
 
 const allNumbers = [];
 
 function isNumber(str: string) {
-	return !isNaN(+str);
+	return !Number.isNaN(+str);
 }
 
 const numberMap: { [key: string]: string } = {
-    one: '1',
-    two: '2',
-    three: '3',
-    four: '4',
-    five: '5',
-    six: '6',
-    seven: '7',
-    eight: '8',
-    nine: '9'
+	one: "1",
+	two: "2",
+	three: "3",
+	four: "4",
+	five: "5",
+	six: "6",
+	seven: "7",
+	eight: "8",
+	nine: "9",
 };
 
 function replaceWrittenNumbersWithDigits(line: string): string {
-    return line.replace(/one|two|three|four|five|six|seven|eight|nine/gi, matched => {
-        return numberMap[matched.toLowerCase()];
-    });
+	return line.replace(
+		/one|two|three|four|five|six|seven|eight|nine/gi,
+		(matched) => {
+			return numberMap[matched.toLowerCase()] + matched[matched.length - 1];
+		},
+	);
 }
 
-const convertedLines = lines.map(replaceWrittenNumbersWithDigits);
+function replaceWrittenNumbersWithDigitsTwice(line: string): string {
+	const firstPass = replaceWrittenNumbersWithDigits(line);
+	return firstPass.replace(
+		/one|two|three|four|five|six|seven|eight|nine/gi,
+		(matched) => {
+			return numberMap[matched.toLowerCase()];
+		},
+	);
+}
+
+const convertedLines = lines.map(replaceWrittenNumbersWithDigitsTwice);
 
 for (let i = 0; i < convertedLines.length; i++) {
 	const line = [convertedLines[i]];
-	let numbers = line[0].split("").filter(isNumber);
+	const numbers = line[0].split("").filter(isNumber);
 	if (numbers.length > 2) {
 		numbers.splice(1, numbers.length - 2);
 	}
@@ -39,8 +52,8 @@ for (let i = 0; i < convertedLines.length; i++) {
 		numberArray.push(numberArray[0]);
 	}
 	const combinedNumber = parseInt(numberArray.join(""));
-	if (!isNaN(combinedNumber)) {
-	  allNumbers.push(combinedNumber);
+	if (!Number.isNaN(combinedNumber)) {
+		allNumbers.push(combinedNumber);
 	}
 }
 const sum = allNumbers.reduce(

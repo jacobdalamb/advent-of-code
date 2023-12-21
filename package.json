@@ -2,7 +2,16 @@
   "name": "day-one",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+      "format": "biome format --write .",
+      "lint": "biome lint .",
+      "lint:fix": "biome lint --apply .",
+      "check-format": "biome check .",
+      "check-format:fix": "biome --apply .",
+      "precommit": "bun run check-format && bun run lint"
+    },
   "devDependencies": {
+    "@biomejs/biome": "1.4.1",
     "bun-types": "latest"
   },
   "peerDependencies": {

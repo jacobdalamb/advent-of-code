@@ -1,6 +1,8 @@
-import text from "./input.txt";
+import input from "./input.txt";
+import test from "./test.txt";
 
-const lines = text.split("\n").filter((line) => line.trim() !== "");
+const inputLines = input.split("\n").filter((line) => line.trim() !== "");
+const testLines = test.split("\n").filter((line) => line.trim() !== "");
 
 const allNumbers = [];
 
@@ -29,6 +31,8 @@ function replaceWrittenNumbersWithDigits(line: string): string {
 	);
 }
 
+console.log(testLines.map(replaceWrittenNumbersWithDigits));
+
 function replaceWrittenNumbersWithDigitsTwice(line: string): string {
 	const firstPass = replaceWrittenNumbersWithDigits(line);
 	return firstPass.replace(
@@ -39,7 +43,9 @@ function replaceWrittenNumbersWithDigitsTwice(line: string): string {
 	);
 }
 
-const convertedLines = lines.map(replaceWrittenNumbersWithDigitsTwice);
+console.log(testLines.map(replaceWrittenNumbersWithDigitsTwice));
+
+const convertedLines = inputLines.map(replaceWrittenNumbersWithDigitsTwice);
 
 for (let i = 0; i < convertedLines.length; i++) {
 	const line = [convertedLines[i]];

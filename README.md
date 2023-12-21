@@ -1,4 +1,4 @@
-# My Advent of Code Journey
+# My [Advent of Code](https://adventofcode.com/) Journey
 
 To install dependencies:
 

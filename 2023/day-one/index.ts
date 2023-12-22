@@ -1,11 +1,11 @@
 // https://adventofcode.com/2023/day/1
 import input from "./input.txt";
 
-const inputLines = input.split("\n").filter((line) => line.trim() !== "");
+const lines = input.split("\n").filter((line) => line.trim() !== "");
 
 const allNumbers = [];
 
-function isNumber(str: string) {
+function isNumeric(str: string) {
 	return !Number.isNaN(+str);
 }
 
@@ -40,11 +40,11 @@ function replaceWrittenNumbersWithDigitsTwice(line: string): string {
 	);
 }
 
-const convertedLines = inputLines.map(replaceWrittenNumbersWithDigitsTwice);
+const convertedLines = lines.map(replaceWrittenNumbersWithDigitsTwice);
 
 for (let i = 0; i < convertedLines.length; i++) {
 	const line = [convertedLines[i]];
-	const numbers = line[0].split("").filter(isNumber);
+	const numbers = line[0].split("").filter(isNumeric);
 	if (numbers.length > 2) {
 		numbers.splice(1, numbers.length - 2);
 	}

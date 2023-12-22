@@ -4,7 +4,7 @@ import input from "./input.txt";
 export const processInput = (input: string): number => {
 	const lines = input.split("\n").filter((line) => line.trim() !== "");
 	const allNumbers = [];
-	const numberMap: { [key: string]: string } = {
+	const pattern: { [key: string]: string } = {
 		one: "1",
 		two: "2",
 		three: "3",
@@ -24,7 +24,7 @@ export const processInput = (input: string): number => {
 		return line.replace(
 			/one|two|three|four|five|six|seven|eight|nine/gi,
 			(matched) => {
-				return numberMap[matched.toLowerCase()] + matched[matched.length - 1];
+				return pattern[matched.toLowerCase()] + matched[matched.length - 1];
 			},
 		);
 	}
@@ -34,7 +34,7 @@ export const processInput = (input: string): number => {
 		return firstPass.replace(
 			/one|two|three|four|five|six|seven|eight|nine/gi,
 			(matched) => {
-				return numberMap[matched.toLowerCase()];
+				return pattern[matched.toLowerCase()];
 			},
 		);
 	}

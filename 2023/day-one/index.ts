@@ -44,8 +44,6 @@ function replaceWrittenNumbersWithDigitsTwice(line: string): string {
 	);
 }
 
-console.log(testLines.map(replaceWrittenNumbersWithDigitsTwice));
-
 const convertedLines = inputLines.map(replaceWrittenNumbersWithDigitsTwice);
 
 for (let i = 0; i < convertedLines.length; i++) {

@@ -41,7 +41,44 @@ const gameObjects = games.map((game) => {
 	return { [gameName]: gameSets };
 });
 
-// console.log(gameObjects[0]);
+// find the hightest number of cubes of each color beteen every set for each game
+
+const maxCubesOfEachColor = gameObjects.map((gameObject) => {
+	const gameName = Object.keys(gameObject)[0];
+	const gameSets = gameObject[gameName];
+
+	const maxCubes: { [key: string]: number } = {};
+	for (const colorKey of Object.keys(numOfCubesInBag)) {
+		for (const outerKey of Object.keys(gameSets)) {
+			const innerKeys = Object.keys(gameSets[outerKey]);
+
+			for (const innerKey of innerKeys) {
+				if (innerKey === colorKey) {
+					if (maxCubes[innerKey] === undefined) {
+						maxCubes[innerKey] = gameSets[outerKey][innerKey];
+					} else if (maxCubes[innerKey] < gameSets[outerKey][innerKey]) {
+						maxCubes[innerKey] = gameSets[outerKey][innerKey];
+					}
+				}
+			}
+		}
+	}
+	return maxCubes;
+});
+
+// get the power of a set of cubes from maxCubesOfEachColor
+
+const powerOfEachSet = maxCubesOfEachColor.map((maxCubes) => {
+	const powerOfSet = Object.values(maxCubes).reduce(
+		(acc, curr) => acc * curr,
+		1,
+	);
+	return powerOfSet;
+});
+
+const sumOfPowers = powerOfEachSet.reduce((acc, curr) => acc + curr, 0);
+
+console.log(sumOfPowers);
 
 // find if each object's key's value in gameObjects exceeds the value of numOfCubesInBag's key's value
 
@@ -81,4 +118,4 @@ const gameIDs = result.map((game) => {
 
 const sumOfGameIDs = gameIDs.reduce((acc, curr) => acc + curr, 0);
 
-console.log(sumOfGameIDs);
+// console.log(sumOfGameIDs);

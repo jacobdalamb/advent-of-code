@@ -1,9 +1,7 @@
 // https://adventofcode.com/2023/day/1
 import input from "./input.txt";
-import test from "./test.txt";
 
 const inputLines = input.split("\n").filter((line) => line.trim() !== "");
-const testLines = test.split("\n").filter((line) => line.trim() !== "");
 
 const allNumbers = [];
 
@@ -31,8 +29,6 @@ function replaceWrittenNumbersWithDigits(line: string): string {
 		},
 	);
 }
-
-console.log(testLines.map(replaceWrittenNumbersWithDigits));
 
 function replaceWrittenNumbersWithDigitsTwice(line: string): string {
 	const firstPass = replaceWrittenNumbersWithDigits(line);

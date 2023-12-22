@@ -1,9 +1,7 @@
 // https://adventofcode.com/2023/day/2
 import input from "./input.txt";
-import test from "./test.txt";
 
 const inputLines = input.split("\n").filter((line) => line.trim() !== "");
-const testLines = test.split("\n").filter((line) => line.trim() !== "");
 
 const games = inputLines;
 
@@ -98,8 +96,6 @@ const result = gameObjects.map((gameObject) => {
 	return { [gameName]: gameStatus };
 });
 
-// console.log(result);
-
 // grab the game ID number (like the 11 in Game 11: ...) of each game that all sets were true then add the ID numbers together
 
 const gameIDs = result.map((game) => {
@@ -114,8 +110,6 @@ const gameIDs = result.map((game) => {
 	return 0;
 });
 
-// console.log(gameIDs);
-
 const sumOfGameIDs = gameIDs.reduce((acc, curr) => acc + curr, 0);
 
-// console.log(sumOfGameIDs);
+console.log(sumOfGameIDs);

@@ -1,9 +1,9 @@
 // https://adventofcode.com/2023/day/2
 import input from "./input.txt";
 
-const inputLines = input.split("\n").filter((line) => line.trim() !== "");
+const lines = input.split("\n").filter((line) => line.trim() !== "");
 
-const games = inputLines;
+const games = lines;
 
 const numOfCubesInBag: { [key: string]: number } = {
 	red: 12,

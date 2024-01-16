@@ -7,8 +7,8 @@
     "lint": "biome lint .",
     "lint:fix": "biome lint --apply .",
     "check-format": "biome check .",
-    "check-format:fix": "biome --apply .",
-    "precommit": "bun run check-format && bun run lint"
+    "check-format:fix": "biome check --apply .",
+    "precommit": "nr check-format && nr lint"
   },
   "devDependencies": {
     "@biomejs/biome": "1.4.1",

@@ -2,17 +2,20 @@
   "name": "day-one",
   "module": "index.ts",
   "type": "module",
+  "version": "2024.01.21",
+  "private": true,
   "scripts": {
     "format": "biome format --write .",
     "lint": "biome lint .",
     "lint:fix": "biome lint --apply .",
     "check-format": "biome check .",
     "check-format:fix": "biome check --apply .",
-    "precommit": "nr check-format && nr lint"
+    "precommit": "nr check-format && bun ./updateVersion.ts && nr lint && nlx knip"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.4.1",
-    "bun-types": "latest"
+    "@biomejs/biome": "1.5.2",
+    "bun-types": "latest",
+    "fs-extra": "^11.2.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
